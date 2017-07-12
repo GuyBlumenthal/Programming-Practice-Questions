@@ -33,8 +33,6 @@ public class J2 {
 			// This for loop goes through all of the Characters in the input
 			// array
 
-			boolean isValid = false;
-
 			for (int j = 0; j < validCharacters.length; j++) {
 
 				// Now we have each inputLetter looping through each
