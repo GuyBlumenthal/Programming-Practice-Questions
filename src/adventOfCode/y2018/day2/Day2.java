@@ -10,7 +10,7 @@ public class Day2 {
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader bf = new BufferedReader(new FileReader(
-				new File("C:\\Users\\guybl\\git\\AdventOfCode\\src\\y2018\\day2\\Day2Input")));
+				new File("C:\\Users\\guybl\\git\\Programming-Practice-Questions\\src\\AdventOfCode\\y2018\\day2\\Day2Input")));
 
 		int a = 0;
 		int b = 0;
