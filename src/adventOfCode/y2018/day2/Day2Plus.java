@@ -11,7 +11,7 @@ public class Day2Plus {
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader bf = new BufferedReader(new FileReader(
-				new File("C:\\Users\\guybl\\eclipse-workspace\\AdventOfCode\\src\\y2018\\day2\\Day2Input")));
+				new File("C:\\Users\\guybl\\git\\AdventOfCode\\src\\y2018\\day2\\Day2Input")));
 
 		ArrayList<char[]> ids = new ArrayList<char[]>();
 		char[] thisId;

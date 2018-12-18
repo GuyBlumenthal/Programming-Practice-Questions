@@ -14,7 +14,7 @@ public class Day3 {
 	public static void main(String[] args) throws IOException {
 
 		Scanner sc = new Scanner(new FileReader(
-				new File("C:\\Users\\guybl\\eclipse-workspace\\AdventOfCode\\src\\y2018\\day3\\Day3Input")));
+				new File("C:\\Users\\guybl\\git\\AdventOfCode\\src\\y2018\\day3\\Day3Input")));
 
 		int id;
 		String[] stPoint;

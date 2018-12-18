@@ -11,7 +11,7 @@ public class Day1Plus {
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader bf = new BufferedReader(new FileReader(
-				new File("C:\\Users\\guybl\\eclipse-workspace\\AdventOfCode\\src\\y2018\\day1\\Day1Input")));
+				new File("C:\\Users\\guybl\\git\\AdventOfCode\\src\\y2018\\day1\\Day1Input")));
 
 		long frequency = 0;
 		ArrayList<Long> visited = new ArrayList<Long>();
