@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class FourEver {
 
-	static HashMap<Integer, String> lengthOfNumber = new HashMap<Integer, String>();
+	static HashMap<Long, String> lengthOfNumber = new HashMap<Long, String>();
 
 	static String[] numbers = { "1 = one	11 = eleven	30 = thirty", "2 = two	12 = twelve	40 = forty",
 			"3 = three	13 = thirteen	50 = fifty", "4 = four	14 = fourteen	60 = sixty",
@@ -18,13 +18,15 @@ public class FourEver {
 		initArray();
 
 		Scanner sc = new Scanner(System.in);
-		int select = Integer.parseInt(sc.nextLine());
+		long select = Long.parseLong(sc.nextLine());
+		System.out.println(select + " - " + createWordFrom(select));
 
 		while (select != -1) {
 
 			select = createWordFrom(select).length();
-			System.out.println(select);
-
+			System.out.print(select);
+			System.out.println(" - " + createWordFrom(select));
+			
 			if (select == 4) {
 				select = -1;
 			}
@@ -34,26 +36,26 @@ public class FourEver {
 
 	}
 
-	public static String createWordFrom(int num) {
+	public static String createWordFrom(long num) {
 
-		String sNum = Integer.toString(num);
+		String sNum = Long.toString(num);
 
 		if (sNum.length() > 3) {
-			return createWordFrom(Integer.parseInt(sNum.substring(0, sNum.length() - 3)), 1)
-					+ createWordFrom(Integer.parseInt(sNum.substring(sNum.length() - 3)));
+			return createWordFrom(Long.parseLong(sNum.substring(0, sNum.length() - 3)), 1)
+					+ createWordFrom(Long.parseLong(sNum.substring(sNum.length() - 3)));
 		} else {
 			return createWordForHundreds(num);
 		}
 
 	}
 
-	public static String createWordFrom(int num, int counter) {
+	public static String createWordFrom(long num, int counter) {
 
-		String sNum = Integer.toString(num);
+		String sNum = Long.toString(num);
 
 		if (sNum.length() > 3) {
-			return createWordFrom(Integer.parseInt(sNum.substring(0, sNum.length() - 3)), counter + 1)
-					+ createWordFrom(Integer.parseInt(sNum.substring(sNum.length() - 3)), counter);
+			return createWordFrom(Long.parseLong(sNum.substring(0, sNum.length() - 3)), counter + 1)
+					+ createWordFrom(Long.parseLong(sNum.substring(sNum.length() - 3)), counter);
 		} else {
 			String result = createWordForHundreds(num);
 			if (result.length() == 0) {
@@ -64,33 +66,57 @@ public class FourEver {
 
 	}
 
-	public static String createWordForHundreds(int num) {
+	public static String createWordForHundreds(long num) {
 
 		if (lengthOfNumber.containsKey(num)) {
 			return lengthOfNumber.get(num);
 		}
 
-		String sNum = Integer.toString(num);
+		String sNum = Long.toString(num);
 
 		String result = "";
 
 		if (sNum.length() >= 3) {
-			result += lengthOfNumber.get(Integer.parseInt(sNum.substring(0, 1))) + "hundred";
+			result += lengthOfNumber.get(Long.parseLong(sNum.substring(0, 1))) + " hundred ";
 		}
 
 		if (lengthOfNumber.containsKey(num - Integer.parseInt(sNum.substring(0, 1)) * 100)) {
+			if (!result.equals("") ) {
+				result += "and ";
+			}
 			result += lengthOfNumber.get(num - Integer.parseInt(sNum.substring(0, 1)) * 100);
+			result += " ";
 		} else if (num - Integer.parseInt(sNum.substring(0, 1)) * 100 != 0){
 
 			if (sNum.length() >= 2) {
+				if (!result.equals("") ) {
+					result += "and ";
+				}
 				result += lengthOfNumber
-						.get(10 * Integer.parseInt(sNum.substring(sNum.length() - 2, sNum.length() - 1)));
+						.get(10 * Long.parseLong(sNum.substring(sNum.length() - 2, sNum.length() - 1)));
+				result += " ";
+				
+				if (Integer.parseInt(sNum.substring(sNum.length() - 1)) != 0)
+					result += lengthOfNumber.get(Long.parseLong(sNum.substring(sNum.length() - 1)));
+				
+			} else {
+			
+				if (!result.equals("") ) {
+					result += "and ";
+				}
+				
+				if (Integer.parseInt(sNum.substring(sNum.length() - 1)) != 0)
+					result += lengthOfNumber.get(Long.parseLong(sNum.substring(sNum.length() - 1)));
+					result += " ";
+				
 			}
-
-			if (Integer.parseInt(sNum.substring(sNum.length() - 1)) != 0)
-				result += lengthOfNumber.get(Integer.parseInt(sNum.substring(sNum.length() - 1)));
+			
 		}
 
+		if (!result.equals("") && !result.substring(result.length() - 1).equals(" ")) {
+			result += " ";
+		}
+		
 		return result;
 
 	}
@@ -100,23 +126,26 @@ public class FourEver {
 		switch (counter) {
 
 		case 1:
-			return "thousand";
+			return "thousand ";
 		case 2:
-			return "million";
+			return "million ";
 		case 3:
-			return "billion";
-
+			return "billion ";
+		case 4:
+			return "trillion ";
+		case 5:
+			return "quadrillion ";
 		}
 
 		return "";
 
 	}
 
-	public static int findMaxNumberFitting(int num) {
+	public static long findMaxNumberFitting(int num) {
 
-		int max = 0;
+		long max = 0;
 
-		for (int i : lengthOfNumber.keySet()) {
+		for (long i : lengthOfNumber.keySet()) {
 
 			if (num - i >= 0) {
 				max = Math.max(max, i);
@@ -140,7 +169,7 @@ public class FourEver {
 
 				curr = in[j].split(" = ");
 
-				lengthOfNumber.put(Integer.parseInt(curr[0].replaceAll(" ", "")), curr[1]);
+				lengthOfNumber.put(Long.parseLong(curr[0].replaceAll(" ", "")), curr[1]);
 
 			}
 
