@@ -11,7 +11,6 @@ public class J5 {
 
 		// We scan in all of the information that we need before taking in the
 		// games.
-		int favouriteTeam = Integer.parseInt(sc.nextLine());
 		int amountOfGamesPlayed = Integer.parseInt(sc.nextLine());
 
 		// We create an array that will hold each value of the game (The four

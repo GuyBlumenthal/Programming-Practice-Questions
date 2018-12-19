@@ -16,7 +16,6 @@ public class Day3 {
 		Scanner sc = new Scanner(new FileReader(
 				new File("C:\\Users\\guybl\\git\\Programming-Practice-Questions\\src\\AdventOfCode\\y2018\\day3\\Day3Input")));
 
-		int id;
 		String[] stPoint;
 		String[] stDimension;
 
@@ -35,7 +34,7 @@ public class Day3 {
 
 		while (sc.hasNextLine()) {
 
-			id = Integer.parseInt(sc.next().substring(1));
+			sc.next();
 			sc.next();
 			stPoint = sc.next().split(",");
 			stDimension = sc.next().split("x");
