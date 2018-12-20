@@ -25,33 +25,25 @@ public class Problem8 {
 
 	public static void main(String[] args) {
 
-		double maxProduct = 0;
-		int[] maxNumbers = new int[13];
+		long maxProduct = 0;
 
 		for (int i = 0; i < FullNum.length; i++) {
 
-			double product = 1;
-			int[] numbers = new int[13];
+			long product = 1;
 
 			for (int j = i; j < i + 13; j++) {
 				try {
-					numbers[j - i] = Integer.parseInt(FullNum[j]);
 					product *= Integer.parseInt(FullNum[j]);
 				} catch (ArrayIndexOutOfBoundsException e) {
 					break;
 				}
 			}
 
-			if (product > maxProduct) {
-				maxProduct = product;
-				maxNumbers = numbers;
-			}
+			maxProduct = Math.max(maxProduct, product);
 
 		}
 
-		for (int i = 0; i < maxNumbers.length; i++) {
-			System.out.print(maxNumbers[i] + " * ");
-		}
+		System.out.println(maxProduct);
 
 	}
 
