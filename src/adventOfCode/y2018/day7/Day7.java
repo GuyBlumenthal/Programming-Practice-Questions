@@ -38,22 +38,6 @@ public class Day7 {
 
 		}
 
-		for (int i = 0; i < relienciesPerLetter.size(); i++) {
-
-			ArrayList<Character> c = relienciesPerLetter.get(i);
-
-			System.out.print((char) (i + 65) + " (" + dependanciesPerLetter[i] + ") --> ");
-
-			for (char cx : c) {
-				System.out.print(cx);
-				if (c.indexOf(cx) != c.size() - 1) {
-					System.out.print(", ");
-				}
-			}
-			System.out.println();
-
-		}
-
 		boolean isFinished = false;
 
 		while (!isFinished) {
