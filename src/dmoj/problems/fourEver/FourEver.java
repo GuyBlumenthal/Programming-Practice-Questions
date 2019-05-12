@@ -24,8 +24,6 @@ public class FourEver {
 		while (select != -1) {
 
 			select = createWordFrom(select).length();
-			System.out.print(select);
-			System.out.println(" - " + createWordFrom(select));
 			
 			if (select == 4) {
 				select = -1;
